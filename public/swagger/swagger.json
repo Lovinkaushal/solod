@@ -1,0 +1,8813 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"IResponse": {
+				"properties": {
+					"message": {
+						"type": "string"
+					},
+					"error": {},
+					"data": {},
+					"status": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"message",
+					"error",
+					"data",
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"Bearer": {
+				"type": "apiKey",
+				"name": "Authorization",
+				"in": "header",
+				"description": "JWT Authorization header using the Bearer scheme."
+			}
+		}
+	},
+	"info": {
+		"title": "solos_apis",
+		"version": "1.0.0",
+		"description": "solos apis",
+		"license": {
+			"name": "license"
+		},
+		"contact": {
+			"name": "BTB"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/api/admin/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get user login",
+				"tags": [
+					"Admin"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"password": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"password",
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/forgotPassword": {
+			"post": {
+				"operationId": "ForgotPassword",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Forgot password api endpoint",
+				"tags": [
+					"Admin"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"url": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"url",
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/resetPassword": {
+			"post": {
+				"operationId": "ResetPassword",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Forgot password api endpoint",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"password": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"password"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/createAminities": {
+			"post": {
+				"operationId": "CreateAminities",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create Aminities",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"iconName": {
+										"type": "string"
+									},
+									"iconImage": {
+										"type": "string",
+										"format": "binary"
+									}
+								},
+								"required": [
+									"iconName",
+									"iconImage"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/deleteAminitiesDetail": {
+			"delete": {
+				"operationId": "DeleteAminitiesDetail",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete aminities detail API",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/GetAminities": {
+			"get": {
+				"operationId": "GetAminities",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Aminities",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/createProperty": {
+			"post": {
+				"operationId": "CreateProperty",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "create property",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": false,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"propertyId": {
+										"type": "string"
+									},
+									"propertyName": {
+										"type": "string"
+									},
+									"location": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									},
+									"area": {
+										"type": "string"
+									},
+									"propertyType": {
+										"type": "string"
+									},
+									"interestPerAnnum": {
+										"type": "string"
+									},
+									"price": {
+										"type": "string"
+									},
+									"dueDate": {
+										"type": "string"
+									},
+									"MonthlyFees": {
+										"type": "string"
+									},
+									"aminities": {
+										"type": "string"
+									},
+									"imageURL": {
+										"type": "string",
+										"format": "binary"
+									},
+									"propertyDocument": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/createAgreement": {
+			"post": {
+				"operationId": "CreateAgreement",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "create Agreement",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"propertyId": {
+										"type": "string"
+									},
+									"userId": {
+										"type": "string"
+									},
+									"leaseRequestId": {
+										"type": "string"
+									},
+									"propertyName": {
+										"type": "string"
+									},
+									"propertyType": {
+										"type": "string"
+									},
+									"streetAddress": {
+										"type": "string"
+									},
+									"city": {
+										"type": "string"
+									},
+									"state": {
+										"type": "string"
+									},
+									"country": {
+										"type": "string"
+									},
+									"apn": {
+										"type": "string"
+									},
+									"typeOfPropertyOwnership": {
+										"type": "string"
+									},
+									"tract": {
+										"type": "string"
+									},
+									"landValue": {
+										"type": "string"
+									},
+									"improvements": {
+										"type": "string"
+									},
+									"totalValue": {
+										"type": "string"
+									},
+									"monthlyLeaseFee": {
+										"type": "string"
+									},
+									"leaseTerm": {
+										"type": "string"
+									},
+									"leaseStartDate": {
+										"type": "string"
+									},
+									"leaseExpirationDate": {
+										"type": "string"
+									},
+									"unit": {
+										"type": "string"
+									},
+									"trustDeed": {
+										"type": "string",
+										"format": "binary"
+									},
+									"appraisalReports": {
+										"type": "string",
+										"format": "binary"
+									},
+									"titlePolicy": {
+										"type": "string",
+										"format": "binary"
+									},
+									"anyEncumbrances": {
+										"type": "string",
+										"format": "binary"
+									},
+									"pictures": {
+										"items": {
+											"type": "string",
+											"format": "binary"
+										},
+										"type": "array"
+									},
+									"videos": {
+										"items": {
+											"type": "string",
+											"format": "binary"
+										},
+										"type": "array"
+									},
+									"images_3d": {
+										"items": {
+											"type": "string",
+											"format": "binary"
+										},
+										"type": "array"
+									},
+									"floorPlans": {
+										"items": {
+											"type": "string",
+											"format": "binary"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"propertyId",
+									"userId",
+									"leaseRequestId",
+									"propertyName",
+									"propertyType",
+									"streetAddress",
+									"city",
+									"state",
+									"country",
+									"apn",
+									"typeOfPropertyOwnership",
+									"tract",
+									"landValue",
+									"improvements",
+									"totalValue",
+									"monthlyLeaseFee",
+									"leaseTerm",
+									"leaseStartDate",
+									"leaseExpirationDate"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/getLeasePropertyData": {
+			"get": {
+				"operationId": "GetLeasePropertyData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Lease Property Data",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/allProperties": {
+			"get": {
+				"operationId": "AllProperties",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/getAllUsers": {
+			"get": {
+				"operationId": "GetAllUsers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get users with optional search functionality",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/updateLeasePropertyStatus": {
+			"put": {
+				"operationId": "UpdateLeasePropertyStatus",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Update status of lease request",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"status": {
+										"type": "string"
+									},
+									"id": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"status",
+									"id"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/getRedTokenRequestData": {
+			"get": {
+				"operationId": "GetRedTokenRequestData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get red token Data with search filter",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/updateRedTokenRequest": {
+			"put": {
+				"operationId": "UpdateRedTokenRequest",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Update status of Red Token Request",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"accountType": {
+										"type": "string"
+									},
+									"hashId": {
+										"type": "string"
+									},
+									"status": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"accountType",
+									"hashId",
+									"status"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/updateWalletAddress": {
+			"put": {
+				"operationId": "UpdateWalletAddress",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Add/Update wallet address",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"receivewalletaddress": {
+										"type": "string"
+									},
+									"privatekey": {
+										"type": "string"
+									},
+									"walletAddress": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"receivewalletaddress",
+									"privatekey",
+									"walletAddress"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/adminData": {
+			"get": {
+				"operationId": "AdminData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Admin Data",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/admin/updateConversionRate": {
+			"put": {
+				"operationId": "UpdateConversionRate",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Add/Update Conversion rate",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"sellPercentage": {
+										"type": "string"
+									},
+									"conversionRate": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"sellPercentage",
+									"conversionRate"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/updateConversionRateForLoan": {
+			"put": {
+				"operationId": "UpdateConversionRateForLoan",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Add/Update Conversion Rate For Loan",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"conversionRateForLoan": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"conversionRateForLoan"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/updateBookingPercentage": {
+			"put": {
+				"operationId": "UpdateBookingPercentage",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Add/Update Booking Percentage",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"bookingPercentage": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"bookingPercentage"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/updateConversionRateForSoloReward": {
+			"put": {
+				"operationId": "UpdateConversionRateForSoloReward",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Add/Update Conversion rate",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"conversionRateForSoloReward": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"conversionRateForSoloReward"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/getConversionRateForSoloReward": {
+			"get": {
+				"operationId": "GetConversionRateForSoloReward",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get conversion rate for solo reward",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/admin/logout": {
+			"get": {
+				"operationId": "Logout",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Logout",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/admin/addNftData": {
+			"post": {
+				"operationId": "AddNftData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Save Nft Details",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": false,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"symbol": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									},
+									"price": {
+										"type": "string"
+									},
+									"categoryId": {
+										"type": "string"
+									},
+									"type": {
+										"type": "string"
+									},
+									"tokenId": {
+										"type": "string"
+									},
+									"contractAddress": {
+										"type": "string"
+									},
+									"Image": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/getNftData": {
+			"get": {
+				"operationId": "GetNftData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/blockUser": {
+			"put": {
+				"operationId": "BlockUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "User blocked or unblocked api",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"isBlocked": {
+										"type": "boolean"
+									},
+									"id": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"isBlocked",
+									"id"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/deletePropertyDetail": {
+			"delete": {
+				"operationId": "DeletePropertyDetail",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete property detail API",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/createCategory": {
+			"post": {
+				"operationId": "CreateCategory",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create NFT Category API",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"categoryName": {
+										"type": "string"
+									},
+									"iconImage": {
+										"type": "string",
+										"format": "binary"
+									}
+								},
+								"required": [
+									"categoryName",
+									"iconImage"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/deleteCategory": {
+			"delete": {
+				"operationId": "DeleteCategory",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete Category api",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/getCategory": {
+			"get": {
+				"operationId": "GetCategory",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/saveFred": {
+			"post": {
+				"operationId": "SaveFred",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"numberOfUsers": {
+										"type": "string"
+									},
+									"expiryDate": {
+										"type": "string"
+									},
+									"amount": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"numberOfUsers",
+									"expiryDate",
+									"amount"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/sendRedTokenByAdmin": {
+			"post": {
+				"operationId": "SendRedTokenByAdmin",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Send Red Admin to User",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"redToken": {
+										"type": "string"
+									},
+									"userName": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"redToken",
+									"userName"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/sendSolosReward": {
+			"post": {
+				"operationId": "SendSolosReward",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Send Solos Reward Admin to User",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"solosReward": {
+										"type": "string"
+									},
+									"userName": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"solosReward",
+									"userName"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/getRedAndSolosTransaction": {
+			"get": {
+				"operationId": "GetRedAndSolosTransaction",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "type",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/FredExchangeRedToken": {
+			"put": {
+				"operationId": "FredExchangeRedToken",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Add/Update fred exchange percentage",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"FredExchangeRedTokenPercentage": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"FredExchangeRedTokenPercentage"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/getFredExchangeRedTokenPercentage": {
+			"get": {
+				"operationId": "GetFredExchangeRedTokenPercentage",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Red Token Exchange Percentage",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/admin/getAllModelTotalDataCount": {
+			"get": {
+				"operationId": "GetAllModelTotalDataCount",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all model total data count for dashboard",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/admin/createSFredTypes": {
+			"post": {
+				"operationId": "CreateSFredTypes",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"type": {
+										"type": "string"
+									},
+									"categoryName": {
+										"type": "string"
+									},
+									"categoryId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"type",
+									"categoryName",
+									"categoryId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/getSFredTypes": {
+			"get": {
+				"operationId": "GetSFredTypes",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/deleteSfredCategory": {
+			"delete": {
+				"operationId": "DeleteSfredCategory",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/updateUsdcRequest": {
+			"put": {
+				"operationId": "UpdateUsdcRequest",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Update status of Usdc Request",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"hashId2": {
+										"type": "string"
+									},
+									"hashId": {
+										"type": "string"
+									},
+									"status": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"hashId2",
+									"hashId",
+									"status"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/srTokenMintTransaction": {
+			"post": {
+				"operationId": "SrTokenMintTransaction",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "SR Token Mint Tansaction Api",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"hash": {
+										"type": "string"
+									},
+									"numberOfTokens": {
+										"type": "string"
+									},
+									"walletAddress": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"hash",
+									"numberOfTokens",
+									"walletAddress"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/getSrTokenTransaction": {
+			"get": {
+				"operationId": "GetSrTokenTransaction",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get SR Token Mint Tansaction Api",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/redTokenMintTransaction": {
+			"post": {
+				"operationId": "RedTokenMintTransaction",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Red Token Mint Tansaction Api",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"hash": {
+										"type": "string"
+									},
+									"numberOfTokens": {
+										"type": "string"
+									},
+									"walletAddress": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"hash",
+									"numberOfTokens",
+									"walletAddress"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/getRedTokenTransaction": {
+			"get": {
+				"operationId": "GetRedTokenTransaction",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Red Token Mint Tansaction Api",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/changePassword": {
+			"post": {
+				"operationId": "ChangePassword",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Change password api endpoint",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"newPassword": {
+										"type": "string"
+									},
+									"oldPassword": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"newPassword",
+									"oldPassword"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/createMpin": {
+			"post": {
+				"operationId": "CreateMpin",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create Mpin Api",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"isMpinUsedForTransactions": {
+										"type": "boolean"
+									},
+									"mpin": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"mpin"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/verifyMpin": {
+			"post": {
+				"operationId": "VerifyMpin",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Verification of mpin over usage",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"mpin": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"mpin"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/checkMpin": {
+			"get": {
+				"operationId": "CheckMpin",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "check mpin api",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/admin/changeMpin": {
+			"post": {
+				"operationId": "ChangeMpin",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Change mpin api",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"newMpin": {
+										"type": "string"
+									},
+									"oldMpin": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"newMpin",
+									"oldMpin"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/enableDisableSecurity": {
+			"post": {
+				"operationId": "EnableDisableSecurity",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Mpin security enable disable security api",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"value": {
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"value"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/securityOtp": {
+			"put": {
+				"operationId": "SecurityOtp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Send OTP for transaction security",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {},
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/verifySecurityOtp": {
+			"post": {
+				"operationId": "VerifySecurityOtp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Verify Otp For Security",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"email": {
+										"type": "string"
+									},
+									"otp": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"email",
+									"otp"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/blockNft": {
+			"put": {
+				"operationId": "BlockNft",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Nft blocked or unblocked API",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"type": {
+										"type": "string"
+									},
+									"isBlocked": {
+										"type": "boolean"
+									},
+									"id": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"type",
+									"isBlocked",
+									"id"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/adminRegister": {
+			"post": {
+				"operationId": "AdminRegister",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Register a admin",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"permission": {
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"role": {
+										"type": "string"
+									},
+									"confirmPassword": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									},
+									"lastName": {
+										"type": "string"
+									},
+									"firstName": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"permission",
+									"role",
+									"confirmPassword",
+									"password",
+									"email",
+									"lastName",
+									"firstName"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/editProfileOfAdmin": {
+			"put": {
+				"operationId": "EditProfileOfAdmin",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Edit Profile",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"isBlocked": {
+										"type": "boolean"
+									},
+									"permission": {
+										"type": "string"
+									},
+									"role": {
+										"type": "number",
+										"format": "double"
+									},
+									"confirmPassword": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									},
+									"lastName": {
+										"type": "string"
+									},
+									"firstName": {
+										"type": "string"
+									},
+									"id": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"id"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/admin/deleteProfile": {
+			"delete": {
+				"operationId": "DeleteProfile",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete Profile",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/getAdminsByRole": {
+			"get": {
+				"operationId": "GetAdminsByRole",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Admins by Role",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/admin/getAdminById": {
+			"get": {
+				"operationId": "GetAdminById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Admins by Role",
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/booq/userLoginBooq": {
+			"post": {
+				"operationId": "UserLoginBooq",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "User login in the booq",
+				"tags": [
+					"Booq"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"password": {
+										"type": "string"
+									},
+									"user_name": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"password",
+									"user_name"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/booq/searchUserInBooq": {
+			"post": {
+				"operationId": "SearchUserInBooq",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "User search in the booq platform",
+				"tags": [
+					"Booq"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"access_token": {
+										"type": "string"
+									},
+									"phone_number": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"access_token",
+									"phone_number"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/booq/transferAmount": {
+			"post": {
+				"operationId": "TransferAmount",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Amount Transfer to SOLO",
+				"tags": [
+					"Booq"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"access_token": {
+										"type": "string"
+									},
+									"redToken": {
+										"type": "string"
+									},
+									"amount": {
+										"type": "string"
+									},
+									"userId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"access_token",
+									"redToken",
+									"amount",
+									"userId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/booq/getTransferAmount": {
+			"get": {
+				"operationId": "GetTransferAmount",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Booq"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/booq/getLoanAmount": {
+			"post": {
+				"operationId": "GetLoanAmount",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get loan from Booq",
+				"tags": [
+					"Booq"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"access_token": {
+										"type": "string"
+									},
+									"redToken": {
+										"type": "string"
+									},
+									"amount": {
+										"type": "string"
+									},
+									"userId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"access_token",
+									"redToken",
+									"amount",
+									"userId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/booq/redTokenLoanReturn": {
+			"post": {
+				"operationId": "RedTokenLoanReturn",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "normal loan amount return to booq",
+				"tags": [
+					"Booq"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"access_token": {
+										"type": "string"
+									},
+									"redToken": {
+										"type": "string"
+									},
+									"amount": {
+										"type": "string"
+									},
+									"userId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"access_token",
+									"redToken",
+									"amount",
+									"userId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/booq/loanAgainstFred": {
+			"post": {
+				"operationId": "LoanAgainstFred",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get loan from Booq against fred",
+				"tags": [
+					"Booq"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"receiver_wallet": {
+										"type": "string"
+									},
+									"sender_wallet": {
+										"type": "string"
+									},
+									"access_token": {
+										"type": "string"
+									},
+									"nft_address": {
+										"type": "string"
+									},
+									"token_id": {
+										"type": "string"
+									},
+									"amount": {
+										"type": "string"
+									},
+									"userId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"receiver_wallet",
+									"sender_wallet",
+									"access_token",
+									"nft_address",
+									"token_id",
+									"amount",
+									"userId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/booq/lockedFredNft": {
+			"get": {
+				"operationId": "LockedFredNft",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get locked fred nft",
+				"tags": [
+					"Booq"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/booq/fredNftLoanReturn": {
+			"post": {
+				"operationId": "FredNftLoanReturn",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "fred loan return to booq",
+				"tags": [
+					"Booq"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"receiver_wallet": {
+										"type": "string"
+									},
+									"sender_wallet": {
+										"type": "string"
+									},
+									"access_token": {
+										"type": "string"
+									},
+									"nft_address": {
+										"type": "string"
+									},
+									"token_id": {
+										"type": "string"
+									},
+									"amount": {
+										"type": "string"
+									},
+									"userId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"receiver_wallet",
+									"sender_wallet",
+									"access_token",
+									"nft_address",
+									"token_id",
+									"amount",
+									"userId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/register": {
+			"post": {
+				"operationId": "Register",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Register a client",
+				"tags": [
+					"Client"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"device_token": {
+										"type": "string"
+									},
+									"device_type": {
+										"type": "string"
+									},
+									"isKYCConfirmed": {
+										"type": "string"
+									},
+									"referralCode": {
+										"type": "string"
+									},
+									"confirmPassword": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									},
+									"countryCode": {
+										"type": "string"
+									},
+									"contact": {
+										"type": "string"
+									},
+									"userName": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									},
+									"name": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"device_token",
+									"device_type",
+									"referralCode",
+									"confirmPassword",
+									"password",
+									"countryCode",
+									"contact",
+									"userName",
+									"email",
+									"name"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/verifyotp": {
+			"post": {
+				"operationId": "Verifyotp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Verify Otp during registration",
+				"tags": [
+					"Client"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"email": {
+										"type": "string"
+									},
+									"otp": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"email",
+									"otp"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/verifyKyc": {
+			"post": {
+				"operationId": "VerifyKyc",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Verify KYC",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"kycCode": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"kycCode"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get user login",
+				"tags": [
+					"Client"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"device_token": {
+										"type": "string"
+									},
+									"device_type": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"device_token",
+									"device_type",
+									"password",
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/verify-payload": {
+			"post": {
+				"operationId": "VerifyPayload",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"message": {
+											"type": "string"
+										},
+										"status": {
+											"type": "number",
+											"format": "double"
+										},
+										"exp": {},
+										"email": {
+											"type": "string"
+										},
+										"userId": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"status"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get user payload verified",
+				"tags": [
+					"Client"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"payload": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"payload"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/forgotPassword": {
+			"post": {
+				"operationId": "ForgotPassword",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Forgot password api endpoint",
+				"tags": [
+					"Client"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/verifyOtp": {
+			"put": {
+				"operationId": "VerifyOtp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Verify otp for user",
+				"tags": [
+					"Client"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"otp": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"otp",
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/resetPassword": {
+			"post": {
+				"operationId": "ResetPassword",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Forgot password api endpoint",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"new_password": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"new_password"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/me": {
+			"get": {
+				"operationId": "Me",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get user info",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/client/updateProfile": {
+			"put": {
+				"operationId": "UpdateProfile",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "update the user profile",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": false,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									},
+									"userName": {
+										"type": "string"
+									},
+									"contact": {
+										"type": "string"
+									},
+									"referralCode": {
+										"type": "string"
+									},
+									"walletAddress": {
+										"type": "string"
+									},
+									"countryCode": {
+										"type": "string"
+									},
+									"bridgeId": {
+										"type": "string"
+									},
+									"bridgeCustomerId": {
+										"type": "string"
+									},
+									"profileImage": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/leaseRequest": {
+			"post": {
+				"operationId": "LeaseRequest",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Request for lease",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": false,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"propertyName": {
+										"type": "string"
+									},
+									"propertyDescription": {
+										"type": "string"
+									},
+									"addressLine1": {
+										"type": "string"
+									},
+									"addressLine2": {
+										"type": "string"
+									},
+									"state": {
+										"type": "string"
+									},
+									"country": {
+										"type": "string"
+									},
+									"pincode": {
+										"type": "string"
+									},
+									"propertyDocument": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/leasePropertyRequestData": {
+			"get": {
+				"operationId": "LeasePropertyRequestData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get User lease property request data",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/getAgreementData": {
+			"get": {
+				"operationId": "GetAgreementData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get agreement Data",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/buyRedToken": {
+			"get": {
+				"operationId": "BuyRedToken",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Buy Red Token",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/client/getBooqConversionRate": {
+			"get": {
+				"operationId": "GetBooqConversionRate",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Booq conversion rate api",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/client/requestRedToken": {
+			"post": {
+				"operationId": "RequestRedToken",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Request for Buying Red Token",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"walletAddress": {
+										"type": "string"
+									},
+									"accountType": {
+										"type": "string"
+									},
+									"transactionType": {
+										"type": "string"
+									},
+									"usdc": {
+										"type": "string"
+									},
+									"hashId": {
+										"type": "string"
+									},
+									"totalRedToken": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"walletAddress",
+									"accountType",
+									"transactionType",
+									"usdc",
+									"hashId",
+									"totalRedToken"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/redTokenTransactionsDetails": {
+			"get": {
+				"operationId": "RedTokenTransactionsDetails",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Request for Buying Red Token",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "transactionType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/usdcTransactionsDetails": {
+			"get": {
+				"operationId": "UsdcTransactionsDetails",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Request for sell red token",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/sellRed": {
+			"post": {
+				"operationId": "SellRed",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Request for usdc",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"hashId2": {
+										"type": "string"
+									},
+									"walletAddress": {
+										"type": "string"
+									},
+									"accountType": {
+										"type": "string"
+									},
+									"transactionType": {
+										"type": "string"
+									},
+									"usdc": {
+										"type": "string"
+									},
+									"hashId": {
+										"type": "string"
+									},
+									"totalRedToken": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"hashId2",
+									"walletAddress",
+									"accountType",
+									"transactionType",
+									"usdc",
+									"hashId",
+									"totalRedToken"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/walletData": {
+			"get": {
+				"operationId": "WalletData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Wallet Data",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "accountType",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/getBookingAmount": {
+			"get": {
+				"operationId": "GetBookingAmount",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Booking Amount",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "totalPropertyValue",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/switchAccount": {
+			"get": {
+				"operationId": "SwitchAccount",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Switch Account Api",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "accountType",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/possesionListing": {
+			"get": {
+				"operationId": "PossesionListing",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get User Possesion Data",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/possesionPropertyYouWant": {
+			"get": {
+				"operationId": "PossesionPropertyYouWant",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get agreement Data",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "propertyId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/leasePropertyYouWant": {
+			"get": {
+				"operationId": "LeasePropertyYouWant",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "GET Property and Agreement Details",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "propertyId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/addAccount": {
+			"post": {
+				"operationId": "AddAccount",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Add Account",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"businessCountryCode": {
+										"type": "string"
+									},
+									"businessContact": {
+										"type": "string"
+									},
+									"businessUserName": {
+										"type": "string"
+									},
+									"businessEmail": {
+										"type": "string"
+									},
+									"accountType": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"businessCountryCode",
+									"businessContact",
+									"businessUserName",
+									"businessEmail",
+									"accountType"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/postContacts": {
+			"post": {
+				"operationId": "PostContacts",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "post contacts",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"pageSize": {
+										"type": "number",
+										"format": "double"
+									},
+									"pageNumber": {
+										"type": "number",
+										"format": "double"
+									},
+									"searchUsername": {
+										"type": "string"
+									},
+									"contacts": {
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"pageSize",
+									"pageNumber",
+									"contacts"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/SearchUser": {
+			"put": {
+				"operationId": "SearchUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Search user is exist or not",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"userName": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"userName"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/sendRedToken": {
+			"post": {
+				"operationId": "SendRedToken",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Red token send to user in the app",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"accountType": {
+										"type": "string"
+									},
+									"redToken": {
+										"type": "string"
+									},
+									"userName": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"accountType",
+									"redToken",
+									"userName"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/logout": {
+			"get": {
+				"operationId": "Logout",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Logout",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/client/sendMpinOtp": {
+			"post": {
+				"operationId": "SendMpinOtp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Send email otp for Mpin",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"emailOtp": {
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"emailOtp"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/registrationToken": {
+			"post": {
+				"operationId": "RegistrationTokens",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "send registration token for notifications",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"registrationToken": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"registrationToken"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/createMpin": {
+			"post": {
+				"operationId": "CreateMpin",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create Mpin Api",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"isMpinUsedForTransactions": {
+										"type": "boolean"
+									},
+									"mpin": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"mpin"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/enableDisableSecurity": {
+			"post": {
+				"operationId": "EnableDisableSecurity",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Mpin, Email, FaceScan status update API",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"type": {
+										"type": "string"
+									},
+									"value": {
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"type",
+									"value"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/verifyPassword": {
+			"post": {
+				"operationId": "VerifyPassword",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create Mpin Api",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"password": {
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/verifyMpin": {
+			"post": {
+				"operationId": "VerifyMpin",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Verification of mpin over usage",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"mpin": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"mpin"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/updateWalletAddress": {
+			"put": {
+				"operationId": "UpdateWalletAddress",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Add/Update wallet address",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"walletAddress": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"walletAddress"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/getWalletAddress": {
+			"get": {
+				"operationId": "GetWalletAddress",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get wallet address",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/client/getNftDataByUser": {
+			"get": {
+				"operationId": "GetNftDataByUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"0",
+								"1"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/api/client/terminateLease": {
+			"put": {
+				"operationId": "TerminateLease",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "This API terminates the lease agreement.",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"status": {
+										"type": "string"
+									},
+									"agreementId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"status",
+									"agreementId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/updateAllUsernamesToUppercase": {
+			"put": {
+				"operationId": "UpdateAllUsernamesToUppercase",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/client/sendSolosRewardByUser": {
+			"post": {
+				"operationId": "SendSolosRewardByUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "solos reward send to user in the app",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"accountType": {
+										"type": "string"
+									},
+									"solosReward": {
+										"type": "string"
+									},
+									"userName": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"accountType",
+									"solosReward",
+									"userName"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/getSolosRewardTransaction": {
+			"get": {
+				"operationId": "GetSolosRewardTransaction",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Solos Reward Transactions",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/getNftDetailsOfUsers": {
+			"get": {
+				"operationId": "GetNftDetailsOfUsers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get User Nft Data",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/client/getFredNftDetailsOfUsers": {
+			"get": {
+				"operationId": "GetFredNftDetailsOfUsers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get User Fred Nft Data",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/client/sellInMarketplace": {
+			"put": {
+				"operationId": "SellInMarketplace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Update status of user possesion property",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"agreementId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"agreementId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/sellPropertyFromUsers": {
+			"get": {
+				"operationId": "SellPropertyFromUsers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get User For sell in marketplace",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"0",
+								"1"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/api/client/sellNftInMarketplace": {
+			"put": {
+				"operationId": "SellNftInMarketplace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Update status of user Nft",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"walletAddress": {
+										"type": "string"
+									},
+									"type": {
+										"type": "string"
+									},
+									"price": {
+										"type": "string"
+									},
+									"nftId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"walletAddress",
+									"type",
+									"price",
+									"nftId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/getNftSignerAddress": {
+			"get": {
+				"operationId": "GetNftSignerAddress",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Nft Signer Address",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "contractAddress",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "tokenId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/getNftDetailSellInMarketplace": {
+			"get": {
+				"operationId": "GetNftDetailSellInMarketplace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"0",
+								"1"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/api/client/getFredNftDetailSellInMarketplace": {
+			"get": {
+				"operationId": "GetFredNftDetailSellInMarketplace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get  fredNft Data which sell in marketplace in user",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"0",
+								"1"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/api/client/sendOtp": {
+			"get": {
+				"operationId": "SendOtp",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Send OTP api for Verification",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/client/totalAssets": {
+			"get": {
+				"operationId": "TotalAssets",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Total Asset Price",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/changePassword": {
+			"post": {
+				"operationId": "ChangePassword",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Change password api of user",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"newPassword": {
+										"type": "string"
+									},
+									"oldPassword": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"newPassword",
+									"oldPassword"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/saveTransactionOfBurnRedToken": {
+			"post": {
+				"operationId": "SaveTransactionOfBurnRedToken",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Save transation of burn red token",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"amount": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"amount"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/getTransactionOfBurnRedToken": {
+			"get": {
+				"operationId": "GetTransactionOfBurnRedToken",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Transaction Burn RedToken",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/saveTransactionOfBurnSrToken": {
+			"post": {
+				"operationId": "SaveTransactionOfBurnSrToken",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Save transation of burn SR token",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"amount": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"amount"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/client/getTransactionOfBurnSrToken": {
+			"get": {
+				"operationId": "GetTransactionOfBurnSrToken",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Transaction Burn SrToken",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/client/getTotalSoloAssets": {
+			"get": {
+				"operationId": "GetTotalSoloAssets",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get TVT transaction details",
+				"tags": [
+					"Client"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "walletAddress",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/fred/createUpdateFredNFT": {
+			"post": {
+				"operationId": "CreateUpdateFredNFT",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create / Update Fred NFT, and Type = \" flexible / fixed \"",
+				"tags": [
+					"Fred"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": false,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"description": {
+										"type": "string"
+									},
+									"fred_name": {
+										"type": "string"
+									},
+									"benefit_month": {
+										"type": "string"
+									},
+									"years": {
+										"type": "string"
+									},
+									"amount": {
+										"type": "string"
+									},
+									"benefit_amount": {
+										"type": "string"
+									},
+									"purchase_limit": {
+										"type": "string"
+									},
+									"start_month": {
+										"type": "string"
+									},
+									"end_year": {
+										"type": "string"
+									},
+									"type": {
+										"type": "string"
+									},
+									"fred_nft_id": {
+										"type": "string"
+									},
+									"tokenId": {
+										"type": "string"
+									},
+									"contractAddress": {
+										"type": "string"
+									},
+									"maturityDate": {
+										"type": "string"
+									},
+									"nft_image": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/fred/nftTransfer": {
+			"post": {
+				"operationId": "NftTransfer",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Normal NFT transfer to user",
+				"tags": [
+					"Fred"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"signerAddress": {
+										"type": "string"
+									},
+									"type": {
+										"type": "string"
+									},
+									"amount": {
+										"type": "string"
+									},
+									"nftDetailId": {
+										"type": "string"
+									},
+									"hashId": {
+										"type": "string"
+									},
+									"receiverId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"signerAddress"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/fred/listFredNFT": {
+			"get": {
+				"operationId": "ListFredNFT",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "List with Pagination Fred NFT",
+				"tags": [
+					"Fred"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "page_number",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page_limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"0",
+								"1"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/api/fred/deleteFredNFT": {
+			"delete": {
+				"operationId": "DeleteFredNFT",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete Fred NFT",
+				"tags": [
+					"Fred"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/fred/purchaseNftAndFredFromUser": {
+			"post": {
+				"operationId": "PurchaseNftAndFredFromUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Purchase nft and fred from user",
+				"tags": [
+					"Fred"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"type": {
+										"type": "string"
+									},
+									"amount": {
+										"type": "string"
+									},
+									"nftDetailId": {
+										"type": "string"
+									},
+									"hashId": {
+										"type": "string"
+									},
+									"receiverId": {
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/fred/airdropFredNft": {
+			"put": {
+				"operationId": "AirdropFredNft",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Fred"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"contractAddress": {
+										"type": "string"
+									},
+									"userId": {
+										"type": "string"
+									},
+									"FredId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"contractAddress",
+									"userId",
+									"FredId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/fred/airdropNft": {
+			"put": {
+				"operationId": "AirdropNft",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Fred"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"contractAddress": {
+										"type": "string"
+									},
+									"userId": {
+										"type": "string"
+									},
+									"NftId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"contractAddress",
+									"userId",
+									"NftId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/reward/sendreward": {
+			"post": {
+				"operationId": "Sendreward",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Reward"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"amount": {
+										"type": "number",
+										"format": "double"
+									},
+									"receiver_id": {
+										"type": "string"
+									},
+									"sender_id": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"amount",
+									"receiver_id",
+									"sender_id"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/superFred/createSuperFred": {
+			"post": {
+				"operationId": "CreateSuperFred",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create Super Fred Nft",
+				"tags": [
+					"superFreds"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": false,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"type": {
+										"type": "string"
+									},
+									"series": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									},
+									"price": {
+										"type": "string"
+									},
+									"limit": {
+										"type": "string"
+									},
+									"quantity": {
+										"type": "string"
+									},
+									"rewardDistribution": {
+										"type": "string"
+									},
+									"rewardSR": {
+										"type": "string"
+									},
+									"dateOfMaturity": {
+										"type": "string"
+									},
+									"maturityAmount": {
+										"type": "string"
+									},
+									"ipfs": {
+										"type": "string"
+									},
+									"image": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/superFred/superFredData": {
+			"get": {
+				"operationId": "SuperFredData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"superFreds"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/superFred/superFredDataOfSoloMarketPlace": {
+			"get": {
+				"operationId": "SuperFredDataOfSoloMarketPlace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"superFreds"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"0",
+								"1"
+							]
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/superFred/buySuperFred": {
+			"post": {
+				"operationId": "BuySuperFred",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Buy Super Red",
+				"tags": [
+					"superFreds"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"walletAddress": {
+										"type": "string"
+									},
+									"quantity": {
+										"type": "string"
+									},
+									"price": {
+										"type": "string"
+									},
+									"id": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"walletAddress",
+									"quantity",
+									"price",
+									"id"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/superFred/getUserSuperRed": {
+			"get": {
+				"operationId": "GetUserSuperRed",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"superFreds"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/superFred/airdropSfred": {
+			"post": {
+				"operationId": "AirdropSfred",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "AirDrop superfred",
+				"tags": [
+					"superFreds"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"quantity": {
+										"type": "string"
+									},
+									"userId": {
+										"type": "string"
+									},
+									"sId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"userId",
+									"sId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/superFred/SFredSellinMarketPlace": {
+			"post": {
+				"operationId": "SFredSellinMarketPlace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create Super Fred Nft",
+				"tags": [
+					"superFreds"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"walletAddress": {
+										"type": "string"
+									},
+									"quantity": {
+										"type": "string"
+									},
+									"price": {
+										"type": "string"
+									},
+									"superFredId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"walletAddress",
+									"quantity",
+									"price",
+									"superFredId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/superFred/getSFredInMarketPlace": {
+			"get": {
+				"operationId": "GetSFredInMarketPlace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"superFreds"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/transaction/transactionOfBuyFutureRed": {
+			"post": {
+				"operationId": "TransactionOfBuyFutureRed",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Transaction of buy future red from Admin",
+				"tags": [
+					"Transaction"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"redToken": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"redToken"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/transaction/transactionToLeaseProperty": {
+			"post": {
+				"operationId": "TransactionToLeaseProperty",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Transaction to lease a property",
+				"tags": [
+					"Transaction"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"agreementId": {
+										"type": "string"
+									},
+									"accountType": {
+										"type": "string"
+									},
+									"propertyId": {
+										"type": "string"
+									},
+									"amount": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"agreementId",
+									"accountType",
+									"propertyId",
+									"amount"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/transaction/getLeaseTransactionsDetails": {
+			"get": {
+				"operationId": "GetLeaseTransactionsDetails",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get transaction Booking/Lease payments of property",
+				"tags": [
+					"Transaction"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/transaction/getRedAndSolosTransactionByUser": {
+			"get": {
+				"operationId": "GetRedAndSolosTransactionByUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Transaction"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/transaction/getSolosTransactionByUser": {
+			"get": {
+				"operationId": "GetSolosTransactionByUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Transaction"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/transaction/saveTransactionOfRedAndSoloReward": {
+			"post": {
+				"operationId": "SaveTransactionOfRedAndSoloReward",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Save transaction of Red and solos reward token",
+				"tags": [
+					"Transaction"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"hashId": {
+										"type": "string"
+									},
+									"walletAddress": {
+										"type": "string"
+									},
+									"transactionType": {
+										"type": "string"
+									},
+									"token": {
+										"type": "string"
+									},
+									"userName": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"hashId",
+									"walletAddress",
+									"transactionType",
+									"token",
+									"userName"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/tvt/createTvt": {
+			"post": {
+				"operationId": "CreateTvt",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create TVT Token",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": false,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"categories": {
+										"type": "string"
+									},
+									"series": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									},
+									"symbol": {
+										"type": "string"
+									},
+									"price": {
+										"type": "string"
+									},
+									"hashId": {
+										"type": "string"
+									},
+									"ipfs": {
+										"type": "string"
+									},
+									"contractAddress": {
+										"type": "string"
+									},
+									"image": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/tvt/tvtData": {
+			"get": {
+				"operationId": "TvtData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/tvt/tvtDataOfUsers": {
+			"get": {
+				"operationId": "TvtDataOfUsers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get TVT Details",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/tvt/totalTvtSellInMarketPlace": {
+			"put": {
+				"operationId": "TotalTvtSellInMarketPlace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Tvts Sell in MarketPlace",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"quantity": {
+										"type": "string"
+									},
+									"id": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"quantity",
+									"id"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/tvt/tvtDataOfSoloMarketPlace": {
+			"get": {
+				"operationId": "TvtDataOfSoloMarketPlace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "sort",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"0",
+								"1"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/api/tvt/buyTvt": {
+			"post": {
+				"operationId": "BuyTvt",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Buy Tvt",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"contractAddress": {
+										"type": "string"
+									},
+									"hashId": {
+										"type": "string"
+									},
+									"walletAddress": {
+										"type": "string"
+									},
+									"quantity": {
+										"type": "string"
+									},
+									"price": {
+										"type": "string"
+									},
+									"id": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"contractAddress",
+									"hashId",
+									"walletAddress",
+									"quantity",
+									"price",
+									"id"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/tvt/getUserTvt": {
+			"get": {
+				"operationId": "GetUserTvt",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/tvt/airdropTvt": {
+			"post": {
+				"operationId": "AirdropTvt",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "AirDrop Tvt",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"contractAddress": {
+										"type": "string"
+									},
+									"quantity": {
+										"type": "string"
+									},
+									"userId": {
+										"type": "string"
+									},
+									"tvtId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"contractAddress",
+									"userId",
+									"tvtId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/tvt/quantityfromSellInMarketPlace": {
+			"put": {
+				"operationId": "QuantityfromSellInMarketPlace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"quantity": {
+										"type": "string"
+									},
+									"id": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"quantity",
+									"id"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/tvt/tvtSellInUserMarketPlace": {
+			"post": {
+				"operationId": "TvtSellInUserMarketPlace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Tvt Sell in User Marketplace api",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"tradePrice": {
+										"type": "string"
+									},
+									"walletAddress": {
+										"type": "string"
+									},
+									"quantity": {
+										"type": "string"
+									},
+									"tvtId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"tradePrice",
+									"walletAddress",
+									"quantity",
+									"tvtId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/tvt/getTvtInUserMarketPlace": {
+			"get": {
+				"operationId": "GetTvtInUserMarketPlace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Tvt Sell in User Marketplace api",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/tvt/updateTvt": {
+			"put": {
+				"operationId": "UpdateTvt",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Update Tvt Data Api",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"quantityForSellInSoloMarketPlace": {
+										"type": "string"
+									},
+									"nftStatus": {
+										"type": "string"
+									},
+									"tradePrice": {
+										"type": "string"
+									},
+									"contractAddress": {
+										"type": "string"
+									},
+									"hashId": {
+										"type": "string"
+									},
+									"price": {
+										"type": "string"
+									},
+									"symbol": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									},
+									"series": {
+										"type": "string"
+									},
+									"categories": {
+										"type": "string"
+									},
+									"id": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"quantityForSellInSoloMarketPlace",
+									"nftStatus",
+									"tradePrice",
+									"contractAddress",
+									"hashId",
+									"price",
+									"symbol",
+									"description",
+									"series",
+									"categories",
+									"id"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/tvt/getTransactionReceipt": {
+			"get": {
+				"operationId": "GetTransactionReceipt",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Tvt transaction receipt",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "tvtId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "hashId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/tvt/createTvtCategory": {
+			"post": {
+				"operationId": "CreateTvtCategory",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create Token Category API",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"categoryName": {
+										"type": "string"
+									},
+									"id": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"categoryName",
+									"id"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/tvt/getTvtCategory": {
+			"get": {
+				"operationId": "GetTvtCategory",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/tvt/requestTvt": {
+			"post": {
+				"operationId": "RequestTvt",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Request for Buying Tvt",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"contractAddress": {
+										"type": "string"
+									},
+									"walletAddress": {
+										"type": "string"
+									},
+									"redToken": {
+										"type": "string"
+									},
+									"hashId": {
+										"type": "string"
+									},
+									"quantity": {
+										"type": "string"
+									},
+									"tvtId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"contractAddress",
+									"walletAddress",
+									"redToken",
+									"hashId",
+									"quantity",
+									"tvtId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/tvt/deleteTvtCategory": {
+			"delete": {
+				"operationId": "DeleteTvtCategory",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete Tvt Category  API",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/tvt/getTvtRequestData": {
+			"get": {
+				"operationId": "GetTvtRequestData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get TVT Details",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "filter",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/tvt/getTvtRequestDataForUsers": {
+			"get": {
+				"operationId": "GetTvtRequestDataForUsers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get TVT Details for users",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/tvt/updateTvtRequest": {
+			"put": {
+				"operationId": "UpdateTvtRequest",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Update status of Tvt Request",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"hashId": {
+										"type": "string"
+									},
+									"status": {
+										"type": "string"
+									},
+									"tvtId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"hashId",
+									"status",
+									"tvtId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/tvt/getAllTvt": {
+			"get": {
+				"operationId": "GetAllTvt",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/api/tvt/getUserHolders": {
+			"get": {
+				"operationId": "GetUserHolders",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get TVT Details for users",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "chainId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "contractAddress",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/tvt/saveTransactionOfBurnTvt": {
+			"post": {
+				"operationId": "SaveTransactionOfBurnTvt",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Save transation of burn Tvt",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"amount": {
+										"type": "string"
+									},
+									"tvtId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"amount",
+									"tvtId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/tvt/getTransactionOfBurnTvt": {
+			"get": {
+				"operationId": "GetTransactionOfBurnTvt",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Transaction Burn Tvt",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/tvt/getTvtTransactions": {
+			"get": {
+				"operationId": "GetTvtTransactions",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get TVT transaction details",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "chainId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "contractAddress",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/api/tvt/deleteTvt": {
+			"delete": {
+				"operationId": "DeleteTvt",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete Tvt detail API",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/api/tvt/tvttokenSellInUserMarketPlace": {
+			"post": {
+				"operationId": "TvttokenSellInUserMarketPlace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Tvt Sell in User Marketplace api",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"tradePrice": {
+										"type": "string"
+									},
+									"walletAddress": {
+										"type": "string"
+									},
+									"quantity": {
+										"type": "string"
+									},
+									"tvtId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"tradePrice",
+									"walletAddress",
+									"quantity",
+									"tvtId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/tvt/getTvtTokenInUserMarketPlace": {
+			"get": {
+				"operationId": "GetTvtTokenInUserMarketPlace",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Tvt Sell in User Marketplace api",
+				"tags": [
+					"Tvt"
+				],
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": []
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
